@@ -2,3 +2,4 @@ __pycache__
 input.txt
 .env
 trained_model
+temp.py

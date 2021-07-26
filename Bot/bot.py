@@ -40,8 +40,11 @@ class ChatBot(discord.Client):
         if random.random() > float(self.response_chance) and has_mentioned == False:
             return
 
-        processed_input = self.process_input(message.content)
+        # Get last n messages, save them to a string to be used as prefix
+        context = await message.channel.history(limit=9).flatten()
 
+        # Process input and generate output
+        processed_input = self.process_input(context)
         response = ""
         with message.channel.typing():
             response = self.chat_ai.get_bot_response(self.model_name, processed_input)
@@ -65,7 +68,7 @@ class ChatBot(discord.Client):
         return should_respond
 
 
-    def set_response_chance(self, response_chance: float = 0.25) -> None:
+    def set_response_chance(self, response_chance: float) -> None:
         """ Set the response rate """
         self.response_chance = response_chance
 

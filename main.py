@@ -16,19 +16,18 @@ def main():
                         dest="response_chance",
                         default=0,
                         help="How likely should the bot respond. For example: give 0.25 for a 25% chance, give 0 for no random responses.")
-    parser.add_argument("-t", dest="test", action="store_true",
+    parser.add_argument("--test", dest="test", action="store_true",
                         help="Test responses in CLI.")
     args = parser.parse_args()
 
     if args.test:
         ai = ChatAI()
-        ai.load_model()
         print("Type \"exit!!\" to exit.")
         while True:
             inp = input("> ")
             if(inp == "exit!!"):
                 return
-            print(ai.get_bot_response(MODEL_NAME, author="h!", message=inp))
+            print(ai.get_bot_response(MODEL_NAME, message=inp))
 
         return
 
