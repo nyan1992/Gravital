@@ -1,10 +1,10 @@
 ## What's This?
-This is my (currently nonfunctional) ongoing attempt at adapting NickBrisebois' project from using [gpt-2-simple](https://github.com/minimaxir/gpt-2-simple) to using [aitextgen](https://github.com/minimaxir/aitextgen). In my own experience, trying to train the model locally with my 3060 was a version-incompatibility dependency nightmare (mostly because of gpt-2-simple's reliance on old tensorflow, which relied on old python and old CUDA, which relied on older drivers on Linux, etc), and I ended up just doing it in colab and copying that model over, which I was never really satisfied with. 
+This is my ongoing attempt at adapting NickBrisebois' project from using [gpt-2-simple](https://github.com/minimaxir/gpt-2-simple) to using [aitextgen](https://github.com/minimaxir/aitextgen). In my own experience, trying to train the model locally with my 3060 was a version-incompatibility dependency nightmare (mostly because of gpt-2-simple's reliance on old tensorflow, which relied on old python and old CUDA, which relied on older drivers on Linux, etc), and I ended up just doing it in colab and copying that model over, which I was never really satisfied with. 
 
 I'm intending to solve this by switching the project over to using aitextgen as the new backend. It's created by the same person as gpt-2-simple, and has been officially named as its successor, boasting faster and more memory efficient generation, support for GPT Neo, and, most importantly, compatibility with modern versions of TensorFlow and CUDA. This should make it easier to train models on modern hardware as well as generally speed things up (generation time on CPU so far is looking slightly better than before as promised).
 
 ## Project status?
-**Early.** I'm not even sure if this will work with the current state of aitextgen. For now I'm just experimenting and laying the groundwork.
+**Early, but kind of functional!** It's kind of barebones, and doesn't do all that I want it to, but to my surprise it works just fine and generates text really fast. Improvements and features on the way.
 
 ## What are you planning on changing?
 At least for now, I'm getting rid of the Docker parts of the project, since I don't quite yet know what I'm doing with that enough to continue it. I'll add it back in later, but the no-gpu training option is staying gone in favor of including a simple tutorial on how to train your model in colab and port it over to the bot.
