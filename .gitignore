@@ -1,6 +1,4 @@
-checkpoint/
-models/
-samples/
 __pycache__
 input.txt
 .env
+trained_model
