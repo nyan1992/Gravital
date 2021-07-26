@@ -3,17 +3,13 @@
 import argparse
 from Bot.bot import ChatBot
 from Bot.ai import ChatAI
-
-MODEL_NAME = "355M"
+#Change what model you're using here
+MODEL_NAME = "124M" #Acceptable values are 124M/355M/774M for OpenAI's GPT2, and "EleutherAI/gpt-neo-125M" for GPT-Neo's model (analogous to openAI 124m)
 
 def main():
     """Main function"""
-    parser = argparse.ArgumentParser(description="Big Lez Chat Bot")
+    parser = argparse.ArgumentParser(description="John's Epic Chat Bot")
     parser.add_argument("--token", dest="token", help="Input")
-    parser.add_argument("--genmodel",
-                        dest="genmodel",
-                        action="store_true",
-                        help="generate new model")
     parser.add_argument("--response_chance", 
                         dest="response_chance", 
                         help="How likely should the bot respond. For example: give 0.25 for a 25% chance, give 0 for no random responses.")
@@ -23,16 +19,15 @@ def main():
     if args.test:
         ai = ChatAI()
         ai.load_model()
-
+        print("Type \"exit!!\" to exit.")
         while True:
             inp = input("> ")
+            if(inp == "exit!!"):
+                return
             print(ai.get_bot_response(MODEL_NAME, author="h!", message=inp))
 
         return
 
-    if args.genmodel:
-        ai = ChatAI()
-        ai.generate_models("355M", "./input.txt")
     else:
         client = ChatBot()
         client.set_response_chance(args.response_chance)
