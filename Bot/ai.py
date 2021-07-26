@@ -16,13 +16,13 @@ class ChatAI:
         """ Get a processed response to a given message using GPT model """
         text =  self.ai.generate(
             model_name=model_name,
-            max_length=30,
+            max_length=len(message.split()) + 75, #dumb and hacky way of setting the length right until "include_prompt=False" becomes a thing. will never be exact
             prompt=message + "\n",
             temperature=0.9,
             return_as_list=True,
         )[0]
-        # print("--PRE TRUNCATION OUTPUT--")
-        # print(text)
-        # print("--------------------------")
+        num_lines = 1 #TODO: make number of lines in response configurable / randomizable using this
+
         text = text.replace(message, "")#this is a hacky solution in place until aitextgen implements an "include prefix" parameter
+        text = text.splitlines()[1]
         return text

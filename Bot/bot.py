@@ -41,7 +41,13 @@ class ChatBot(discord.Client):
             return
 
         # Get last n messages, save them to a string to be used as prefix
-        context = await message.channel.history(limit=9).flatten()
+        context = ""
+        history = await message.channel.history(limit=9).flatten() #TODO: make limit parameter # configurable through command line args
+        history.reverse() #put in right order
+        for msg in history:
+            context += msg.content + "\n"#"context" now becomes a big string containing the content only of the last n messages, line-by-line
+        context = context.rstrip(context[-1])#probably-stupid way of making every line but the last have a newline after it
+        print(context)#TODO: remove this in favor of something prettier, have a proper console output solution
 
         # Process input and generate output
         processed_input = self.process_input(context)

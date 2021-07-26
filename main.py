@@ -29,8 +29,6 @@ def main():
                 return
             print(ai.get_bot_response(MODEL_NAME, message=inp))
 
-        return
-
     else:
         client = ChatBot()
         client.set_response_chance(args.response_chance)
