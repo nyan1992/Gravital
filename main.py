@@ -8,7 +8,7 @@ MODEL_NAME = "124M" #Acceptable values are 124M/355M/774M for OpenAI's GPT2, and
 
 def main():
     """Main function"""
-    parser = argparse.ArgumentParser(description="John's Epic Chat Bot")
+    parser = argparse.ArgumentParser(description="John's Epic Chatbot")
     parser.add_argument("--token", dest="token", help="Input")
     parser.add_argument("--response_chance", 
                         dest="response_chance", 

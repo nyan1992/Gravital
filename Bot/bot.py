@@ -20,7 +20,6 @@ class ChatBot(discord.Client):
         """ Initializes the GPT2 AI on bot startup """
         print("Logged on as", self.user)
         self.chat_ai = ChatAI() # Ready the GPT2 AI generator
-        self.chat_ai.load_model() # Load the GPT2 model
 
 
     async def on_message(self, message: discord.Message) -> None:
@@ -45,7 +44,7 @@ class ChatBot(discord.Client):
 
         response = ""
         with message.channel.typing():
-            response = self.chat_ai.get_bot_response(self.model_name, message.author.nick, processed_input)
+            response = self.chat_ai.get_bot_response(self.model_name, processed_input)
 
         await message.channel.send(response)
 
