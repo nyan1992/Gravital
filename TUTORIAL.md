@@ -20,3 +20,11 @@ That aside, now that you have your text files, you're going to want to combine t
 
 ## Training
 Now it's time to train our AI! As per the notice at the top of this tutorial, we will be using Google Colab, which gives you (limited) free access to GPUs in the cloud for AI training. [This](https://colab.research.google.com/drive/15qBZx5y9rdaQSyWpsreMDnTiZ5IlN0zD?usp=sharing) "notebook" (a way of storing text right alongside Python code) will walk you through the process. When all is said and done, you're going to want to click "files" on the left side of the screen, and download the folder named "trained model", moving it to the DiscordChatAI-GPT2 folder afterwards. This contains, well, the trained model, and is the "brain" of the bot. You can swap out this folder for another of the same model at any time, and the bot will continue to work just fine, just with a different way of generating outputs.
+
+## Starting the bot
+Now all that's left to do is to run the bot itself! Open up a terminal, and in it, open up the DiscordChatAI-GPT2 folder. Run `main.py --token YourBot'sTokenFromEarlier` and DiscordChatAI-GPT2 (or whatever you've decided to name yours) will awaken! I recommend you run this same command every time to start it up, as it's more secure then storing your token in plain text within `main.py`, but you can also of course do that if you deem that the convenience to be worth it.
+
+### Options
+DiscordChatAI-GPT2 comes with some useful command-line arguments for customizing your bot. They are listed below:
+- `--response_chance` Sets how likely your bot is to respond to a message without being spoken to, on a scale from 0 (default) to 1. If you enable this option, I recommend confining your bot to a certain channel or channels so that it doesn't spam the whole server or get overloaded.
+- `--test` Lets you test your AI without launching the discord bot. You will be able to talk to it one-one-one, providing any input you like. Note that context-awareness (ability to take into account the last several messages instead of just the most recent) is not yet supported in this mode.
