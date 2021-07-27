@@ -66,14 +66,6 @@ class ChatBot(discord.Client):
         processed_input.replace("@"+self.user.name, "")
         return processed_input
 
-
-    def check_if_should_respond(self, has_been_mentioned) -> bool:
-        """ Check if the bot should respond to a message """
-        should_respond = random.random() < self.response_chance
-
-        return should_respond
-
-
     def set_response_chance(self, response_chance: float) -> None:
         """ Set the response rate """
         self.response_chance = response_chance

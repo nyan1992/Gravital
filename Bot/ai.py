@@ -12,10 +12,9 @@ class ChatAI:
                 "You need to train the model first. Do this in colab or locally and make sure the finished model is in a folder called \"trained_model\".")
         self.ai = aitextgen(model_folder="trained_model")
 
-    def get_bot_response(self, model_name: str, message: str) -> str:
+    def get_bot_response(self, message: str) -> str:
         """ Get a processed response to a given message using GPT model """
         text =  self.ai.generate(
-            model_name=model_name,
             max_length=len(message.split()) + 75, #dumb and hacky way of setting the length right until "include_prompt=False" becomes a thing. will never be exact
             prompt=message + "\n",
             temperature=0.9,
