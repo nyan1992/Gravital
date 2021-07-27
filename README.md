@@ -1,3 +1,4 @@
+[![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)   [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 ## What's This?
 This is my ongoing attempt at adapting NickBrisebois' project from using [gpt-2-simple](https://github.com/minimaxir/gpt-2-simple) to using [aitextgen](https://github.com/minimaxir/aitextgen). In my own experience, trying to train the model locally with my 3060 was a version-incompatibility dependency nightmare (mostly because of gpt-2-simple's reliance on old tensorflow, which relied on old python and old CUDA, which relied on older drivers on Linux, etc), and I ended up just doing it in colab and copying that model over, which I was never really satisfied with. 
 
