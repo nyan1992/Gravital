@@ -1,4 +1,5 @@
 import random
+import datetime
 import discord
 from .ai import ChatAI
 
@@ -50,16 +51,23 @@ class ChatBot(discord.Client):
             context += msg.content + "\n"
         # probably-stupid way of making every line but the last have a newline after it
         context = context.rstrip(context[-1])
-        # TODO: remove this in favor of something prettier, have a proper console output solution
+        
+        # Print status to console
+        print("----------Bot Triggered at {0:%Y-%m-%d %H:%M:%S}----------".format(datetime.datetime.now()))
+        print("-----Context for message:")
         print(context)
+        print("-----")
 
         # Process input and generate output
         processed_input = self.process_input(context)
         response = ""
         with message.channel.typing():
             response = self.chat_ai.get_bot_response(processed_input)
+        print("----Response Given:")
+        print(response)
+        print("----")
 
-        await message.channel.send(response)
+        await message.channel.send(response)# sends the response
 
     def process_input(self, message: str) -> str:
         """ Process the input message """

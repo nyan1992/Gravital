@@ -16,7 +16,7 @@ class ChatAI:
     def get_bot_response(self, message: str) -> str:
         """ Get a processed response to a given message using GPT model """
         text = self.ai.generate(
-            # \/ dumb and hacky way of setting the length right (taking maxlines into account) until "include_prompt=False" becomes a thing. will never be exact
+            # ahead: dumb and hacky way of setting the length right (taking maxlines into account) until "include_prompt=False" becomes a thing. will never be exact
             max_length=len(message.split()) + 70 + 5*self.maxlines,
             prompt=message + "\n",
             temperature=0.9,
@@ -27,7 +27,7 @@ class ChatAI:
         for i in range(0, random.randint(1, self.maxlines)):  # include a random amount of lines up to maxlines in the response
             try:
                 print(text.splitlines()[i + 1])
-                output += text.splitlines()[i + 1] + "\n" # rare cases in which this could cause IndexOutOfRangeException, will fix later
+                output += text.splitlines()[i + 1] + "\n"
             except:
                 print("outofranged")
                 print("---FULL GENERATED")
