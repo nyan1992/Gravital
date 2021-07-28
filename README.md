@@ -24,6 +24,7 @@ Beta, I guess, but it works. The only real issues as far as I know are ones that
 - Re-add Docker support from upstream
 - Ability to use emojis
 - Support for training the model on your own hardware with one command
+- 
 Open to suggestions, file an issue if you have an idea.
 
 ## Cool! How do I use it?
