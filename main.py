@@ -30,7 +30,7 @@ def main():
         client.set_response_chance(args.response_chance)
         if args.token is None:
             raise Exception(
-                "You are trying to launch the bot but have not included your discord token with --token. Please include this and try again.")
+                "You are trying to launch the bot but have not included your discord bot's token with --token. Please include this and try again.")
         client.run(args.token)
 
 
