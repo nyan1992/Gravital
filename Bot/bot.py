@@ -57,8 +57,7 @@ class ChatBot(discord.Client):
         processed_input = self.process_input(context)
         response = ""
         with message.channel.typing():
-            response = self.chat_ai.get_bot_response(
-                self.model_name, processed_input)
+            response = self.chat_ai.get_bot_response(processed_input)
 
         await message.channel.send(response)
 
