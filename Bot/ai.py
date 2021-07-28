@@ -25,5 +25,8 @@ class ChatAI:
         text = text.replace(message, "") # remove the input text from the output text
         output = ""
         for i in range(0, random.randint(1, int(self.maxlines))):  # include a random amount of lines up to maxlines in the response
-            output += text.splitlines()[i + 1] + "\n" # rare cases in which this could cause IndexOutOfRangeException, will fix later
+            try:
+                output += text.splitlines()[i + 1] + "\n" # rare cases in which this could cause IndexOutOfRangeException, will fix later
+            except:
+                continue
         return output.rstrip(output[-1]) # shaves off that last newline character like in bot.py, prob better way to do this
