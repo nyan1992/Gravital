@@ -29,7 +29,5 @@ class ChatAI:
                 print(text.splitlines()[i + 1])
                 output += text.splitlines()[i + 1] + "\n"
             except:
-                print("outofranged")
-                print("---FULL GENERATED")
                 continue
         return output.rstrip(output[-1]) # shaves off that last newline character like in bot.py, prob better way to do this
