@@ -7,7 +7,7 @@ Before we can do anything bot-related or AI-related, we need to "set the table",
 2. Install the necessary software.
   - Python. I strongly recommend using [Miniconda](https://docs.conda.io/en/latest/miniconda.html) to keep things tidy and contained.
     * If you've got conda, type `conda create --name aibot python=3.9` to set up a new environment for this bot. Then, do `conda activate aibot` to enter it.
-  - Install the necessary Python packages using `pip install discord` and then `pip install aitextgen`. This will take a little while.
+  - Install the necessary Python packages using `pip install discord` and then `pip install aitextgen`. This will take a little while, as pytorch is pretty huge.
 
 ## Data Gathering And Processing
 Any AI needs data to work with, and for this project, that data will be your very own discord server's message history. Before we do anything, though, let's go ahead and get our bot user created. This is essentially the "account" that your bot will use, and conveniently enough, it's also what we'll be using to grab the data!
@@ -26,5 +26,6 @@ Now all that's left to do is to run the bot itself! Open up a terminal, and in i
 
 ### Options
 DiscordChatAI-GPT2 comes with some useful command-line arguments for customizing your bot. They are listed below:
+- `--help` Prints a quick guide on what these parameters are
 - `--response_chance` Sets how likely your bot is to respond to a message without being spoken to, on a scale from 0 (default) to 1. If you enable this option, I recommend confining your bot to a certain channel or channels so that it doesn't spam the whole server or get overloaded.
 - `--test` Lets you test your AI without launching the discord bot. You will be able to talk to it one-one-one, providing any input you like. Note that context-awareness (ability to take into account the last several messages instead of just the most recent) is not yet supported in this mode.
