@@ -19,7 +19,7 @@ def main():
     parser.add_argument("--maxlines", dest="maxlines", help="The maximum number of lines that the AI will try to generate per message. Will always generate random amount up to this value, which defaults to 1.",
                         default=1)
     parser.add_argument("--train", dest="train", action="store_true",
-                        help="Trains the model on a file named dataset.txt. Only use this if you have a good NVIDIA GPU. If the trained_model folder exists here, it will pick up where it last left off.")
+                        help="Trains the model on a file named dataset.txt. Only use this if you have a good NVIDIA GPU. Overwrites existing trained_model folder. Currently untested!")
     args = parser.parse_args()
 
     if args.test:
