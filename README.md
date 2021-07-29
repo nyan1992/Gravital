@@ -34,3 +34,4 @@ The [TUTORIAL.md](https://github.com/johnnymcmike/DiscordChatAI-GPT2/blob/master
 - Training currently doesn't work on Windows at all, and training GPT Neo on Colab in my experience has always resulted in an OOM error.
 - Determining the "max length" value for generation currently uses some hacky workarounds, as aitextgen has not yet implemented an option to remove the input text from the output text. This might end up resulting in `IndexError`s, which likely won't crash the bot if that occurs, but will cause some messages to randomly be much shorter (1 or 2 characters) than others.
 - Data cleaner script currently does not filter out reaction messages, so occasionally you might see a response that looks like one of those.
+- Randomly, for no reason that I can find, bot will repeat verbatim whatever is 9 messages above it. May be a quirk of aitextgen or of my model, but it resolves itself and goes back to normal generation within 1 or 2 messages.
