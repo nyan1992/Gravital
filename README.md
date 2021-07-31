@@ -24,7 +24,8 @@ Beta, I guess, but it works. The only real issues as far as I know are ones that
 - Re-add Docker support from upstream
 - Ability to use emojis
 - Support for training the model on your own hardware with one command
-- 
+- Rename project, mostly for the sake of discoverability and shareability, since one of my main goals in starting this fork was to make it a more public and easy-to-use tool that other people could use to get as much enjoyment out of the bot as me and my friends did. Comment on the appropriate issue thread if you have suggestions.
+
 Open to suggestions, file an issue if you have an idea.
 
 ## Cool! How do I use it?
