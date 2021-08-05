@@ -18,7 +18,7 @@ And a few more are new to this fork:
 - Bot says one line of text per message by default, but can also say a random number of lines up to a user-defined `maxlines` limit.
   
 ## Project Status?
-Beta, I guess, but it works. The only real issues as far as I know are ones that come from aitextgen's currently beta status, but as those shape up and get fixed so too will everything you need out of Gravital.
+Beta, I guess, but it works. Most of the issues I know about are ones that come from aitextgen's currently beta status, but as those shape up and get fixed so too will everything you need out of Gravital.
 
 ## Upcoming Features?
 - Re-add Docker support from upstream
