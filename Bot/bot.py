@@ -21,6 +21,7 @@ class ChatBot(discord.Client):
     async def on_ready(self) -> None:
         """ Initializes the GPT2 AI on bot startup """
         print("Logged on as", self.user)
+        print(self.user.id)
         self.chat_ai = ChatAI(self.maxlines)  # Ready the GPT2 AI generator
 
     async def on_message(self, message: discord.Message) -> None:
@@ -72,11 +73,8 @@ class ChatBot(discord.Client):
     def process_input(self, message: str) -> str:
         """ Process the input message """
         processed_input = message
-        # Convert user ids to just nick names
-        processed_input.replace(
-            "@"+self.user.name+"#"+self.user.discriminator, "")
-        processed_input.replace("@"+self.user.name, "")
-        return processed_input
+        # Remove bot's @s from input
+        return processed_input.replace(("<@!" + self.user.id + ">"), "")
 
     def set_response_chance(self, response_chance: float) -> None:
         """ Set the response rate """
