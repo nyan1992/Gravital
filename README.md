@@ -1,7 +1,7 @@
 # Your Own Personal AI Chatbot
 [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)   [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 ## What's This?
-DiscordChatAI-GPT2 is an AI Discord chatbot based on [aitextgen's](https://github.com/minimaxir/aitextgen) implementation of GPT-2. There is a full, start-to-finish [tutorial](https://github.com/johnnymcmike/DiscordChatAI-GPT2/blob/master/TUTORIAL.md) for setting up and training the bot on your discord server's history, and I have observed it to pick up on my server's inside jokes, say usernames, and generally type a lot like one of us with surprising coherency.
+Gravital is an AI Discord chatbot based on [aitextgen's](https://github.com/minimaxir/aitextgen) implementation of GPT-2. There is a full, start-to-finish [tutorial](https://github.com/johnnymcmike/Gravital/blob/master/TUTORIAL.md) for setting up and training the bot on your discord server's history, and I have observed it to pick up on my server's inside jokes, say usernames, and generally type a lot like one of us with surprising coherency.
 
 This project is forked from https://github.com/NickBrisebois/DiscordChatAI-GPT2, which used gpt-2-simple, an older implementation of GPT-2 by the same creator. While great, this led to issues, as it was hard to get training working on my own hardware, and generally was lacking some features that I think make a big difference to the believability of the results and the usability of the program.
 
@@ -18,17 +18,17 @@ And a few more are new to this fork:
 - Bot says one line of text per message by default, but can also say a random number of lines up to a user-defined `maxlines` limit.
   
 ## Project Status?
-Beta, I guess, but it works. The only real issues as far as I know are ones that come from aitextgen's currently beta status, but as those shape up and get fixed so too will everything you need out of DiscordChatAI-GPT2.
+Beta, I guess, but it works. The only real issues as far as I know are ones that come from aitextgen's currently beta status, but as those shape up and get fixed so too will everything you need out of Gravital.
 
 ## Upcoming Features?
 - Re-add Docker support from upstream
 - Ability to use emojis
 - Support for training the model on your own hardware with one command
-- 
+
 Open to suggestions, file an issue if you have an idea.
 
 ## Cool! How do I use it?
-The [TUTORIAL.md](https://github.com/johnnymcmike/DiscordChatAI-GPT2/blob/master/TUTORIAL.md) file contains all you need.
+The [TUTORIAL.md](https://github.com/johnnymcmike/Gravital/blob/master/TUTORIAL.md) file contains all you need.
 
 ## Known Issues?
 - Training currently doesn't work on Windows at all, and training GPT Neo on Colab in my experience has always resulted in an OOM error.
