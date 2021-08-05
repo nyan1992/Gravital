@@ -74,7 +74,7 @@ class ChatBot(discord.Client):
         """ Process the input message """
         processed_input = message
         # Remove bot's @s from input
-        return processed_input.replace(("<@!" + self.user.id + ">"), "")
+        return processed_input.replace(("<@!" + str(self.user.id) + ">"), "")
 
     def set_response_chance(self, response_chance: float) -> None:
         """ Set the response rate """
