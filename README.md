@@ -11,7 +11,7 @@ DiscordChatAI-GPT2 boasts the following features:
 - Talk to your AI in the command line in "test mode" with no Discord required
 
 And a few more are new to this fork:
-- Lightning-fast generation times (in my tests averaged 2.58s from mention to response, this was running on an i5-2400, which is a CPU from 2011), more memory-efficiency, and all the other goodies that [aitextgen](https://github.com/minimaxir/aitextgen) brings.
+- Lightning-fast generation times (in my tests, the GPT-2 124M model averaged 2.58s from mention to response, this was running on an i5-2400, which is a CPU from 2011), more memory-efficiency, and all the other goodies that [aitextgen](https://github.com/minimaxir/aitextgen) brings.
 - Context-awareness. Reads the last 9 messages and takes them into account when generating a response.
 - Support for GPT-Neo, which can generate longer texts and has other improvements
 - Handy dataset-cleaner script for use with [Discord Chat Exporter.](https://github.com/Tyrrrz/DiscordChatExporter)
