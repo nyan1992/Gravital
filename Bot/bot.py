@@ -26,7 +26,6 @@ class ChatBot(discord.Client):
 
     async def on_message(self, message: discord.Message) -> None:
         """ Handle new messages sent to the server channels this bot is watching """
-
         if message.author == self.user:
             # Skip any messages sent by ourselves so that we don't get stuck in any loops
             return
@@ -42,33 +41,33 @@ class ChatBot(discord.Client):
         if random.random() > float(self.response_chance) and has_mentioned == False:
             return
 
-        # Get last n messages, save them to a string to be used as prefix
-        context = ""
-        # TODO: make limit parameter # configurable through command line args
-        history = await message.channel.history(limit=9).flatten()
-        history.reverse()  # put in right order
-        for msg in history:
-            # "context" now becomes a big string containing the content only of the last n messages, line-by-line
-            context += msg.content + "\n"
-        # probably-stupid way of making every line but the last have a newline after it
-        context = context.rstrip(context[-1])
-        
-        # Print status to console
-        print("----------Bot Triggered at {0:%Y-%m-%d %H:%M:%S}----------".format(datetime.datetime.now()))
-        print("-----Context for message:")
-        print(context)
-        print("-----")
+        async with message.channel.typing():
+            # Get last n messages, save them to a string to be used as prefix
+            context = ""
+            # TODO: make limit parameter # configurable through command line args
+            history = await message.channel.history(limit=9).flatten()
+            history.reverse()  # put in right order
+            for msg in history:
+                # "context" now becomes a big string containing the content only of the last n messages, line-by-line
+                context += msg.content + "\n"
+            # probably-stupid way of making every line but the last have a newline after it
+            context = context.rstrip(context[-1])
+            
+            # Print status to console
+            print("----------Bot Triggered at {0:%Y-%m-%d %H:%M:%S}----------".format(datetime.datetime.now()))
+            print("-----Context for message:")
+            print(context)
+            print("-----")
 
-        # Process input and generate output
-        processed_input = self.process_input(context)
-        response = ""
-        with message.channel.typing():
+            # Process input and generate output
+            processed_input = self.process_input(context)
+            response = ""
             response = self.chat_ai.get_bot_response(processed_input)
-        print("----Response Given:")
-        print(response)
-        print("----")
+            print("----Response Given:")
+            print(response)
+            print("----")
 
-        await message.channel.send(response)# sends the response
+            await message.channel.send(response)# sends the response
 
     def process_input(self, message: str) -> str:
         """ Process the input message """
