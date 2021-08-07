@@ -31,8 +31,9 @@ def main():
                 return
             print(ai.get_bot_response(message=inp))
     elif args.train:
-        ai = ChatAI(togpu=True)
-        ai.gpt2.train("dataset.txt",
+        from aitextgen import aitextgen #lazily import aitextgen. idk if this matters, but i thought it might speed up start times for when you're not training the AI as opposed to having this at the top
+        ai = aitextgen(to_gpu=True)
+        ai.train("dataset.txt",
                       line_by_line=False,
                       from_cache=False,
                       num_steps=5000, #Takes less than an hour on my RTX 3060. Increase if you want, but remember that training can pick up where it left off after this finishes.
