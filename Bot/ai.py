@@ -19,6 +19,10 @@ class ChatAI:
         
         # numtokens = len(message.split()) + 70 + 5*self.maxlines
         numtokens = len(self.gpt2.tokenizer(message)["input_ids"])
+        if numtokens >= 1000:
+            while numtokens >= 1000:
+                message = ' '.join(message.split(' ')[20:]) #pretty arbitrary
+                numtokens = len(self.gpt2.tokenizer(message)["input_ids"])
 
         text = self.gpt2.generate(
             max_length=numtokens + 70 + 5*self.maxlines,
