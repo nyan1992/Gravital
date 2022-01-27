@@ -15,9 +15,13 @@ class ChatAI:
 
     def get_bot_response(self, message: str) -> str:
         """ Get a processed response to a given message using GPT model """
+        #below: this is very hacky and bad, but it seems to prevent the input from overflowing the output max_length. please see
+        
+        # numtokens = len(message.split()) + 70 + 5*self.maxlines
+        numtokens = len(self.gpt2.tokenizer(message)["input_ids"])
+
         text = self.gpt2.generate(
-            # ahead: dumb and hacky way of setting the length right (taking maxlines into account) until "include_prompt=False" becomes a thing. will never be exact
-            max_length=len(message.split()) + 70 + 5*self.maxlines,
+            max_length=numtokens + 70 + 5*self.maxlines,
             prompt=message + "\n",
             temperature=0.9,
             return_as_list=True,

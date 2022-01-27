@@ -36,7 +36,7 @@ def main():
         ai.train("dataset.txt",
                       line_by_line=False,
                       from_cache=False,
-                      num_steps=5000, #Takes less than an hour on my RTX 3060. Increase if you want, but remember that training can pick up where it left off after this finishes.
+                      num_steps=55000, #Takes less than an hour on my RTX 3060. Increase if you want, but remember that training can pick up where it left off after this finishes.
                       generate_every=1000,
                       save_every=1000,
                       learning_rate=1e-3,
