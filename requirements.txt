@@ -20,7 +20,7 @@ google-auth-oauthlib==0.4.4
 grpcio==1.39.0
 huggingface-hub==0.0.12
 idna==3.2
-joblib==1.0.1
+joblib==1.2.0
 Markdown==3.3.4
 multidict==5.1.0
 numpy==1.21.1
