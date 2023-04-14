@@ -15,7 +15,9 @@ class ChatBot(discord.Client):
 
     def __init__(self, maxlines) -> None:
         self.model_name = "355M"  # Overwrite with set_model_name()
-        super().__init__()
+        intents = discord.Intents.default()
+        intents.message_content = True
+        super().__init__(intents=intents)
         self.maxlines = maxlines  #see comment on main.py line 33
 
     async def on_ready(self) -> None:
@@ -45,7 +47,7 @@ class ChatBot(discord.Client):
             # Get last n messages, save them to a string to be used as prefix
             context = ""
             # TODO: make limit parameter # configurable through command line args
-            history = await message.channel.history(limit=9).flatten()
+            history = [message async for message in message.channel.history(limit=9)]
             history.reverse()  # put in right order
             for msg in history:
                 # "context" now becomes a big string containing the content only of the last n messages, line-by-line
