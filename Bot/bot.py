@@ -1,6 +1,13 @@
+import base64
+from fileinput import filename
+import imp
+import json
 import random
 import datetime
 import discord
+import io
+import re
+import requests
 from .ai import ChatAI
 
 
@@ -34,6 +41,33 @@ class ChatBot(discord.Client):
         has_mentioned = False
         for mention in message.mentions:
             if str(mention) == self.user.name+"#"+self.user.discriminator:
+                mentionmsg = re.sub(r'\<[^>]*\>', '', message.content).strip()
+                if(mentionmsg.startswith('!image')):#image generation part
+                    async with message.channel.typing():
+                        prompt = mentionmsg.split(' ',1)[1]
+                        payload = {
+                            'input':{
+                                'prompt':prompt,
+                                'width':512,
+                                'height':512,
+                                'prompt_strength':0.5,
+                                'num_outputs':1,
+                                'num_inference_steps':100,
+                                'guidance_scale':7.5,
+                            }
+                        }
+                        if(message.attachments):
+                            payload["input"]['init_image'] = str(message.attachments[0])
+                        headers = {
+                            "Content-Type": "application/json"
+                        }
+                        r = requests.post(url = "http://localhost:5000/predictions", json=payload, headers=headers)
+                        imgbase64 = json.loads(r.text)["output"][0].split(",")[1].strip()
+                        resultfile = discord.File(fp = io.BytesIO(base64.b64decode(imgbase64)), filename = "resultimg.png")
+                        e = discord.Embed()
+                        await message.reply(file = resultfile)
+                    return
+                print(re.sub(r'\<[^>]*\>', '', message.content))
                 has_mentioned = True
                 break
 
@@ -45,7 +79,7 @@ class ChatBot(discord.Client):
             # Get last n messages, save them to a string to be used as prefix
             context = ""
             # TODO: make limit parameter # configurable through command line args
-            history = await message.channel.history(limit=9).flatten()
+            history = await message.channel.history(limit=6).flatten()
             history.reverse()  # put in right order
             for msg in history:
                 # "context" now becomes a big string containing the content only of the last n messages, line-by-line
